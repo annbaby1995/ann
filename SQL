@@ -1,0 +1,48 @@
+--1-Objective is to obtain data for India--
+SELECT * FROM `bigquery-public-data.world_bank_intl_education.international_education` 
+Where Country_code="IND"
+-- Ans- 100--
+--2-Objective how many countries have been included for this study--
+SELECT count(distinct(country_name)) FROM `bigquery-public-data.world_bank_intl_education.international_education`
+--Ans- 242—
+--3-Objective To find the country with maximum value--
+SELECT country_name,max(value) FROM `bigquery-public-data.world_bank_intl_education.international_education`GROUP BY country_name
+--answer- Angola
+--4-Objective- value in descending order--
+SELECT * FROM `bigquery-public-data.world_bank_intl_education.international_education` 
+ORDER BY value DESC
+--answer 1.20603020118353E14 to 5.57094529581264E13
+--5-Objective is to find average value of different countries--
+SELECT country_name,AVG(value) FROM `bigquery-public-data.world_bank_intl_education.international_education` GROUP BY country_name
+--Answer Angola 9.680362826959362E8  Turkey 4.1619149880309334E9—
+
+--6-Objective how many countries have been included for this study—
+SELECT count(distinct(country_name)) FROM `bigquery-public-data.world_bank_intl_debt.international_debt`
+--Ans- 134—
+--7-Objective To find the country with maximum value--
+SELECT country_name,max(value) FROM `bigquery-public-data.world_bank_intl_debt.international_debt`GROUP BY country_name
+--Ans- Afghanistan2.10171485618162E10
+--8-Objective is to find average value of different countries--
+SELECT country_name,AVG(value) FROM ` bigquery-public-data.world_bank_intl_debt.international_debt ` GROUP BY country_name
+--Answer - Afghanistan 6.225612112434356E7-
+
+--9-Objective
+SELECT `bigquery-public-data.world_bank_intl_debt.country_summary`.country_code, `bigquery-public-data.world_bank_intl_education.international_education`.value
+FROM `bigquery-public-data.world_bank_intl_debt.country_summary`
+LEFT JOIN `bigquery-public-data.world_bank_intl_education.international_education`
+ON `bigquery-public-data.world_bank_intl_debt.country_summary`.country_code = `bigquery-public-data.world_bank_intl_education.international_education`.country_code
+
+--Answer – COG 55124.0 to COG 2798.06609680831-
+
+
+ 
+
+
+
+
+	
+
+
+
+
+
